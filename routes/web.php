@@ -2,7 +2,7 @@
 
 
 
-Route::group(array('prefix' => 'api','middleware' => 'Cors'), function()
+Route::group(array('prefix' => 'api','middleware' => 'cors'), function()
 {
 
   Route::get('/', function () {
