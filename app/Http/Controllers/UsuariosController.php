@@ -74,7 +74,7 @@ class UsuariosController extends Controller
             ], 404);
         }
         else{
-            return response()->json($usuario,200);
+            return response()->json($usuario);
         }
 
         

@@ -28,8 +28,6 @@ class RetiradasController extends Controller
         }
 		
 
-        
-
         return response()->json($retiradas);
     }
 
