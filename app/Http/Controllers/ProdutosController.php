@@ -7,9 +7,6 @@ use Illuminate\Http\Request;
 class ProdutosController extends Controller
 {
 
-    public function __construct(){
-        $this->middleware('cors');
-    }
 
     public function index()
     {
@@ -36,7 +33,9 @@ class ProdutosController extends Controller
         $produto->fill($request->all());
         $produto->save();
 
-        return response()->json($produto, 201);
+        //retornando a lista completa para facilitar visualização na aplicação react
+        $produtos = Produto::all();
+        return response()->json($produtos, 201);
     }
 
      public function update(Request $request, $id)
@@ -51,6 +50,7 @@ class ProdutosController extends Controller
 
         $produto->fill($request->all());
         $produto->save();
+
 
         return response()->json($produto);
     }

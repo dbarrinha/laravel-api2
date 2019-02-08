@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Retirada;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class RetiradasController extends Controller
@@ -20,18 +21,16 @@ class RetiradasController extends Controller
 
     public function show($id)
     {
-        $retirada = Retirada::find($id);
-		$retirada->produto;
-		$retirada->usuario;
+        $retiradas = Retirada::where('usuario_id','=',$id)->get();
+		foreach($retiradas as $retirada){
+           $retirada->produto;
+           $retirada->usuario;
+        }
 		
 
-        if(!$retirada) {
-            return response()->json([
-                'message'   => 'Record not found',
-            ], 404);
-        }
+        
 
-        return response()->json($retirada);
+        return response()->json($retiradas);
     }
 
     public function store(Request $request)
@@ -71,4 +70,6 @@ class RetiradasController extends Controller
 
         $retirada->delete();
     }
+
+
 }

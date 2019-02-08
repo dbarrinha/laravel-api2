@@ -1,13 +1,14 @@
 <?php
 
 
-
-Route::group(array('prefix' => 'api','middleware' => 'cors'), function()
+Route::middleware(['cors'])->prefix('api')->group(function()
 {
 
+  		
   Route::get('/', function () {
       return response()->json(['message' => ' API do Danilo', 'status' => 'Connected']);;
   });
+  Route::post('/login', 'UsuariosController@login');
 
   
   	Route::resource('produtos', 'ProdutosController');
@@ -19,10 +20,13 @@ Route::group(array('prefix' => 'api','middleware' => 'cors'), function()
 
 
 
-
 Route::get('/',  function () {
     return redirect('api');
 });
-Route::get('/teste', ['middleware' => 'cors', function () {
+Route::post('/teste', ['middleware' => 'cors', function () {
     return 'hello friends';
 }]);
+
+Auth::routes();
+
+

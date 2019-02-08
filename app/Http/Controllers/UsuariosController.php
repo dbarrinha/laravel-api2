@@ -62,4 +62,21 @@ class UsuariosController extends Controller
 
         $usuario->delete();
     }
+
+    public function login(Request $request)
+    {   
+        $usuario = Usuario::where('usuario','=',$request->input('usuario'))->where('senha','=',$request->input('senha'))->get();
+
+        
+        if(count($usuario) == 0) {
+            return response()->json([
+                'message'   => 'Record not found',
+            ], 404);
+        }
+        else{
+            return response()->json($usuario,200);
+        }
+
+        
+    }
 }
