@@ -23,7 +23,7 @@ Route::middleware(['cors'])->prefix('api')->group(function()
 Route::get('/',  function () {
     return redirect('api');
 });
-Route::post('/teste', ['middleware' => 'cors', function () {
+Route::get('/teste', ['middleware' => 'cors', function () {
     return 'hello friends';
 }]);
 
