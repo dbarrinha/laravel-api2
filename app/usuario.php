@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class usuario extends Model
+class Usuario extends Model
 {	
 	protected $fillable = ['nome','senha', 'usuario'];
 
@@ -12,6 +12,6 @@ class usuario extends Model
     
     public function retiradas()
     {
-        return $this->hasMany('App\retirada');
+        return $this->hasMany('App\Retirada');
     }
 }

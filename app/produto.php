@@ -12,6 +12,6 @@ class Produto extends Model
 
     public function retiradas()
     {
-        return $this->hasMany('App\retirada');
+        return $this->hasMany('App\Retirada');
     }
 }
